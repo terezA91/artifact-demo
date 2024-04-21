@@ -29,7 +29,7 @@ jobs:
 
             - name: Chmod permission of  artifact
               run : |
-                chmod u+777 artifact  
+                chmod +777 artifact  
                 ls -lah
 
             - name: Send to Nexus

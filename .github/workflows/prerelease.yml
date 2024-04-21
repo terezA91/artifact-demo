@@ -28,7 +28,9 @@ jobs:
               run : ls -lah    
 
             - name: Chmod permission of  artifact
-              run : chmod +777 artifact  
+              run : |
+                chmod u+777 artifact  
+                ls -lah
 
             - name: Send to Nexus
               run : curl --fail -u admin:nexusPass --upload-file artifact  'https://9efc-45-143-207-14.ngrok-free.app/repository/gor-git-repo/'

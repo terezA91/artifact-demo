@@ -21,9 +21,9 @@ jobs:
 
             - name: Download artifact
               uses: actions/download-artifact@v4
-              with:
-                name: my-artifact2
-                path: ./
+              #with:
+                #name: my-artifact2
+                #path: ./
 
             - name: LS after download artifact
               run : ls -lah    

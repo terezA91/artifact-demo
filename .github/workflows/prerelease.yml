@@ -17,7 +17,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: my-artifact
-                path: .github/workfows/*
+                path: .github/workfows/**
 
 
 

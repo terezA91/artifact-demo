@@ -25,7 +25,6 @@ jobs:
               run : ls -lah    
 
             - name: Nexus Repo Publish
-              if: ${{ github.event == 'push'}}
               uses: sonatype-nexus-community/nexus-repo-github-action@1.0.0
               with:
                 serverUrl: https://2984-46-162-197-47.ngrok-free.app

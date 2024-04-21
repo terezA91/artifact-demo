@@ -24,7 +24,7 @@ jobs:
             - name: Ls after downloading artifact
               run : ls -lah    
 
-            - name: Nexus Repo Publish
+            - name: Nexus Repo Publish.
               if: ${{ github.event == 'push'}}
               uses: sonatype-nexus-community/nexus-repo-github-action@master
               with:

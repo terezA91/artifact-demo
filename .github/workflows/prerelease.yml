@@ -13,14 +13,20 @@ jobs:
             - name: ls
               run : ls -lah
               
-            - name: artifact
+            - name: Build artifact
               uses: actions/upload-artifact@v4
               with:
                 name: my-artifact2
                 path: ./
 
-            - name: Check ws
-              run : echo ${{ github.workspace }}    
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: my-artifact2
+                path: ./
+
+            - name: LS after download artifact
+              run : ls -lah    
 
             #- name: Send to Nexus
               #run : curl --fail -u admin:nexusPass --upload-file  'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'

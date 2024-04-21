@@ -20,6 +20,6 @@ jobs:
                 path: ./
 
             - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file my-artifact2.zip 'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
+              run : curl --fail -u admin:nexusPass --upload-file https://github.com/terezA91/artifact-demo/actions/runs/8770799522/artifacts/1432919894 'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
 
 

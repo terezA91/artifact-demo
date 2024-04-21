@@ -16,19 +16,28 @@ jobs:
             - name: Build artifact
               uses: actions/upload-artifact@v4
               with:
-                name: my-artifact
                 path: ./
 
             - name: Download artifact
               uses: actions/download-artifact@v4
-              with:
-                name: my-artifact
               
             - name: Ls after downloading artifact
               run : ls -lah    
 
+            - name: Nexus Repo Publish
+              if: ${{ github.event == 'push'}}
+              uses: sonatype-nexus-community/nexus-repo-github-action@master
+              with:
+                serverUrl: https://2984-46-162-197-47.ngrok-free.app
+                username: ${{ secrets.NEXUS_UNAME }}
+                password: ${{ secrets.NEXUS_PSW }}
+                format: raw
+                repository: repo-for-git
+                coordinates: directory=dev
+                assets: filename=artifact
+                filename: artifact
 
-            - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file my-artifact  'https://2984-46-162-197-47.ngrok-free.app/repository/repo-for-git/'
+            #- name: Send to Nexus
+              #run : curl --fail -u admin:nexusPass --upload-file artifact  'https://2984-46-162-197-47.ngrok-free.app/repository/repo-for-git/'
 
 

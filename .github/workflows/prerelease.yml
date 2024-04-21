@@ -24,9 +24,9 @@ jobs:
             - name: Ls after downloading artifact
               run : ls -lah    
 
-            - name: Nexus Repo Publish.
+            - name: Nexus Repo Publish
               if: ${{ github.event == 'push'}}
-              uses: sonatype-nexus-community/nexus-repo-github-action@master
+              uses: sonatype-nexus-community/nexus-repo-github-action@main
               with:
                 serverUrl: https://2984-46-162-197-47.ngrok-free.app
                 username: ${{ secrets.NEXUS_UNAME }}

@@ -28,6 +28,6 @@ jobs:
               run : ls -lah    
 
             - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file hel  'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
+              run : curl --fail -u admin:nexusPass --upload-file artifact.zip  'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
 
 

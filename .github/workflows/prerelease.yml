@@ -19,7 +19,7 @@ jobs:
                 name: my-artifact2
                 path: ./
 
-            #- name: Send to Nexus
-              #run :     curl --fail -u admin:nexusPass --upload-file foo.jar 'http://my-nexus-server.com:8081/repository/my-raw-repo/'
+            - name: Send to Nexus
+              run : curl --fail -u admin:nexusPass --upload-file my-artifact2.zip 'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
 
 

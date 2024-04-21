@@ -28,6 +28,6 @@ jobs:
               run : ls -lah    
 
             - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://dfb7-46-162-197-47.ngrok-free.app/repository/maven-releases/'
+              run : curl --fail -u admin:nexusPass --upload-file artifact  '/https://9efc-45-143-207-14.ngrok-free.app/repository/maven-releases/'
 
 

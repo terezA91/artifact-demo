@@ -15,21 +15,19 @@ jobs:
               
             - name: Build artifact
               uses: actions/upload-artifact@v4
-              with:
-                name: my-artifact7
-                path: ./
+              #with:
+                #name: my-artifact7
+                #path: ./
 
             - name: Download artifact
               uses: actions/download-artifact@v4
-              with:
-                name: my-artifact7
               
                 
 
             - name: LS after download artifact
               run : ls -lah    
 
-            - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file my-artifact6.zip 'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
+            #- name: Send to Nexus
+              #run : curl --fail -u admin:nexusPass --upload-file  'https://dfb7-46-162-197-47.ngrok-free.app/repository/for-git-repo/'
 
 

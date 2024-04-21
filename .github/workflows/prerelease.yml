@@ -16,7 +16,10 @@ jobs:
             - name: artifact
               uses: actions/upload-artifact@v4
               with:
-                name: my-artifact
+                name: my-artifact2
                 path: ./
+
+            #- name: Send to Nexus
+              #run :     curl --fail -u admin:nexusPass --upload-file foo.jar 'http://my-nexus-server.com:8081/repository/my-raw-repo/'
 
 

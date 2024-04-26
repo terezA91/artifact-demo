@@ -1,6 +1,9 @@
 name: Upload Artifact
 
-on: [push, workflow_dispatch]
+on: 
+  push:
+  workflow_dispatch: 
+  
 
 env:
   VAR1: ""

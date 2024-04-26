@@ -4,12 +4,6 @@ on:
   push:
   workflow_dispatch: 
   
-
-env:
-  VAR1: "dev"
-  VAR2: "test"
-  EVENT_NAME: ${{ github.event_name }}
-
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -66,8 +60,11 @@ jobs:
                 #assets: filename=README.md
                 #filename: README.md
 
-            - name: Send to Nexus
-              if: ${{ env.EVENT_NAME }} == 'push'
-              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/${{env.VAR1}}/'
+            - name: Send to Nexus/dev repo
+              if  : ${{ env.EVENT_NAME }} == 'push'
+              run : curl --fail -u ${{secrets.NEXUS_UNAME}}:${{secrets.NEXUS_PSW}} --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/dev/'
+            - name: Send to Nexus/test repo  
+              if  : ${{ env.EVENT_NAME }} == 'workflow_dispatch'
+              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/test/'
 
 

@@ -34,7 +34,7 @@ jobs:
               run : echo "$GITHUB_CONTEXT"
 
             - name: Print tag-name
-              run : echo ${{ github.event.release.tag_name }}  
+              run : echo ${{ github.event_name.tag }}  
             
             - name: Run switch-case-action
               env :

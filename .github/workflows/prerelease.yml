@@ -25,7 +25,9 @@ jobs:
               run : ls -lah    
 
             - name: See Github context
-              run : echo ${{ toJson(github) }}  
+              env: 
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+              run : echo $GITHUB_CONTEXT
 
             #- name: Nexus Repo Publish
               #uses: sonatype-nexus-community/nexus-repo-github-action@1.0.0

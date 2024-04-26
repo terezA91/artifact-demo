@@ -65,6 +65,6 @@ jobs:
                 #filename: README.md
 
             - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://cd9f-46-162-196-212.ngrok-free.app/repository/$VAR1/'
+              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/${{env.VAR1}}/'
 
 

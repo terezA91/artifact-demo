@@ -30,6 +30,20 @@ jobs:
 
             - name: Print tag-name
               run : echo ${{ github.event.release.tag_name }}  
+            
+            - name: Run switch-case-action
+              env :
+                EVENT_NAME: ${{ github.event_name }}
+              uses: thaitype/actions-switch-case@v1
+              id: switch-case
+              with:
+                default: "its the default"
+                conditionals-with-values: |
+                  ${{ $EVENT_NAME == 'not-test' }} => shouldnt be this one
+                  ${{ $EVENT_NAME == 'push' }} => event is push
+            
+            - name: Echo the result
+              run: echo ${{ steps.switch-case.outputs.match }} # Output: its the default  
 
             #- name: Nexus Repo Publish
               #uses: sonatype-nexus-community/nexus-repo-github-action@1.0.0

@@ -39,8 +39,8 @@ jobs:
               with:
                 default: "its the default"
                 conditionals-with-values: |
-                  ${{ $EVENT_NAME == 'not-test' }} => shouldnt be this one
-                  ${{ $EVENT_NAME == 'push' }} => event is push
+                  EVENT_NAME == 'not-test' => shouldnt be this one
+                  EVENT_NAME == 'push'  => event is push
             
             - name: Echo the result
               run: echo ${{ steps.switch-case.outputs.match }} # Output: its the default  

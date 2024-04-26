@@ -8,6 +8,8 @@ on:
 env:
   VAR1: "dev"
   VAR2: "test"
+  EVENT_NAME: ${{ github.event_name }}
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -65,6 +67,7 @@ jobs:
                 #filename: README.md
 
             - name: Send to Nexus
+              if: ${{ env.EVENT_NAME }} == 'push'
               run : curl --fail -u admin:nexusPass --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/${{env.VAR1}}/'
 
 

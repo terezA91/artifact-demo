@@ -24,6 +24,9 @@ jobs:
             - name: Ls after downloading artifact
               run : ls -lah    
 
+            - name: See Github context
+              run : echo ${{ toJson(github) }}  
+
             #- name: Nexus Repo Publish
               #uses: sonatype-nexus-community/nexus-repo-github-action@1.0.0
               #with:

@@ -6,8 +6,8 @@ on:
   
 
 env:
-  VAR1: ""
-  VAR2: ""
+  VAR1: "dev"
+  VAR2: "test"
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
               with:
                 default: "its the default"
                 conditionals-with-values: |
-                  EVENT_NAME == 'push' => event is push
+                  EVENT_NAME == 'push' => dev
                   EVENT_NAME == 'workflow_dispatch'  => event is workflow_dispatch
             
             - name: Echo the result
@@ -65,6 +65,6 @@ jobs:
                 #filename: README.md
 
             - name: Send to Nexus
-              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://cd9f-46-162-196-212.ngrok-free.app/repository/dev/'
+              run : curl --fail -u admin:nexusPass --upload-file artifact  'https://cd9f-46-162-196-212.ngrok-free.app/repository/$VAR1/'
 
 

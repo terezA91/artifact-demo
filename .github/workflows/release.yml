@@ -4,7 +4,7 @@ on:
   release: 
   
 env:
-  TRIGGER: ${{ github.event.release.tag_name}}
+  VERSION_TAG: ${{ github.event.release.tag_name}}
 
 jobs:
     build:
@@ -20,6 +20,7 @@ jobs:
             - name: Build artifact
               uses: actions/upload-artifact@v4
               with:
+                name: ${{ env.VERSION_TAG }}
                 path: ./
 
             - name: Download artifact
@@ -50,7 +51,6 @@ jobs:
             - name: Echo the result
               run: echo ${{ steps.switch-case.outputs.match }} # Output: its the default 
 
-            #- name: Send to Nexus/dev repo
-              #if  : ${{ env.TRIGGER }} == 'push'
-              #run : curl --fail -u ${{secrets.NEXUS_UNAME}}:${{secrets.NEXUS_PSW}} --upload-file artifact  'https://d97f-46-162-196-212.ngrok-free.app/repository/dev/'
+            - name: Send to Nexus/prod repo
+              run : curl --fail -u ${{secrets.NEXUS_UNAME}}:${{secrets.NEXUS_PSW}} --upload-file ${{env.VERSION_TAG}}  'https://d97f-46-162-196-212.ngrok-free.app/repository/prod/'
         

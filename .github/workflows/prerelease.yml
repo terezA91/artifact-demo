@@ -1,7 +1,6 @@
 name: Upload Artifact
 
-on: push
-
+on: [push, release]
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -28,6 +27,9 @@ jobs:
               env : 
                 GITHUB_CONTEXT: ${{ toJson(github) }}
               run : echo "$GITHUB_CONTEXT"
+
+            - name: Print tag-name
+              run : echo ${{ github.event.release.tag_name }}  
 
             #- name: Nexus Repo Publish
               #uses: sonatype-nexus-community/nexus-repo-github-action@1.0.0
